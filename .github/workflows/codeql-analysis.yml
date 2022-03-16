@@ -63,7 +63,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-        make
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead.c -o imgRead
     #   make bootstrap
     #   make release
 
