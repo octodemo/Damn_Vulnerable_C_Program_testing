@@ -64,6 +64,11 @@ jobs:
 
     - run: |
         gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead.c -o imgRead
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_heap_exhaustion.c.c -o imgRead_heap_exhaustion
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_libfuzzer.c -o imgRead_libfuzzer
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_patched.c -o imgRead_patched
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_socket.c -o imgRead_socket
+        gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_stack_exhaustion.c -o imgRead_stack_exhaustion
     #   make bootstrap
     #   make release
 
