@@ -63,7 +63,7 @@ jobs:
     #    uses a compiled language
 
     - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead.c -o imgRead
-    - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_heap_exhaustion.c.c -o imgRead_heap_exhaustion
+    - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_heap_exhaustion.c -o imgRead_heap_exhaustion
     - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_libfuzzer.c -o imgRead_libfuzzer
     - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_patched.c -o imgRead_patched
     - run: gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead_socket.c -o imgRead_socket
