@@ -48,7 +48,7 @@ jobs:
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
-        queries: security-and-quality,https://github.com/advanced-security/codeql-queries/cpp/suites/codeql-cpp.qls@main,https://github.com/advanced-security/codeql-queries/cpp/suites/cpp-security-experiemntal.qls@c-security-experimental
+        queries: security-and-quality,advanced-security/codeql-queries/cpp/suites/codeql-cpp.qls@main,advanced-security/codeql-queries/cpp/suites/cpp-security-experiemntal.qls@c-security-experimental
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
