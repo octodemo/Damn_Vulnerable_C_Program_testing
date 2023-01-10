@@ -5,11 +5,17 @@
 #website: http://hardik05.wordpress.com
 #**************************************
  
- CC=afl-gcc  #compiler
- TARGET=imgRead #target file name
-  
-all:
-	   AFL_HARDEN=1 $(CC) -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead.c -o $(TARGET)
+TARGET=imgRead #target file name
+
+all: gcc
+.PHONY: gcc afl clean
+
+gcc:
+	gcc imgRead.c -o $(TARGET)
+ 
+afl:
+	AFL_HARDEN=1 afl-gcc -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined imgRead.c -o $(TARGET)
 	     
 clean:
-	    rm $(TARGET)
+	-rm $(TARGET)
+
