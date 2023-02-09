@@ -48,7 +48,7 @@ jobs:
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
-        queries: security-and-quality,advanced-security/codeql-queries/cpp/suites/codeql-cpp.qls@main,advanced-security/codeql-queries/cpp/suites/cpp-security-experiemntal.qls@c-security-experimental
+        queries: security-and-quality,advanced-security/codeql-queries/cpp/suites/codeql-cpp.qls@main,advanced-security/codeql-queries/cpp/suites/cpp-security-experimental.qls@c-security-experimental
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
@@ -73,3 +73,19 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: False
+        output: sarif-results
+
+    - name: Edit SARIF
+      uses: aegilops/edit_sarif@main
+      with:
+        tags: testing-testing-123
+        input: sarif-results/${{ matrix.language }}.sarif
+        output: sarif-results/${{ matrix.language }}.sarif
+
+    - name: Upload SARIF
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: sarif-results/${{ matrix.language }}.sarif
